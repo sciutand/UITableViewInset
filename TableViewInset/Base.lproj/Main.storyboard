@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,9 +37,23 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9p-uL-OsX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bottom View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dg-4z-RtI">
+                                        <rect key="frame" x="8" y="89" width="359" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="gDB-y6-o8r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" red="0.1333333333" green="0.19215686269999999" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.019607843140000001" green="0.76862745099999996" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="1dg-4z-RtI" firstAttribute="centerY" secondItem="g9p-uL-OsX" secondAttribute="centerY" id="0Gh-KQ-FIs"/>
                                     <constraint firstAttribute="height" constant="200" id="6eD-hE-u2C"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="1dg-4z-RtI" secondAttribute="trailing" id="SZs-FD-1ke"/>
+                                    <constraint firstItem="1dg-4z-RtI" firstAttribute="leading" secondItem="g9p-uL-OsX" secondAttribute="leadingMargin" id="bGL-TV-7kj"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kl4-4a-gyU">
@@ -47,7 +62,23 @@
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="vb7-YK-vK2">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.1176470588" green="0.56078431370000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table View Header" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awT-wp-Okd">
+                                            <rect key="frame" x="8" y="11.5" width="359" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="P0j-p7-ky5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="awT-wp-Okd" firstAttribute="leading" secondItem="vb7-YK-vK2" secondAttribute="leadingMargin" id="1fA-sk-y9P"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="awT-wp-Okd" secondAttribute="trailing" id="XQ6-wm-x4g"/>
+                                        <constraint firstItem="awT-wp-Okd" firstAttribute="centerY" secondItem="vb7-YK-vK2" secondAttribute="centerY" id="pOY-hn-meV"/>
+                                    </constraints>
                                 </view>
                             </tableView>
                         </subviews>
@@ -65,7 +96,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="bUG-47-7m7">
-                        <barButtonItem key="leftBarButtonItem" title="toggle" id="1mT-t6-USH">
+                        <barButtonItem key="leftBarButtonItem" title="Behaviour" id="1mT-t6-USH">
                             <connections>
                                 <action selector="toggle:" destination="BYZ-38-t0r" id="bZP-QP-zFD"/>
                             </connections>
@@ -73,6 +104,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="behaviourButton" destination="1mT-t6-USH" id="ebN-qy-cgW"/>
                         <outlet property="tableview" destination="Kl4-4a-gyU" id="3qx-b9-yYE"/>
                     </connections>
                 </viewController>
