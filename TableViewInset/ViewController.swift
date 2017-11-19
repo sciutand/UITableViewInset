@@ -20,19 +20,19 @@ class ViewController: UIViewController {
 		navigationController?.navigationBar.isTranslucent = true
 		tableview.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
 		if  #available(iOS 11, *) {
-			setBehaviour(behaviour: .never, title: "Never")
+			setBehaviour(behaviour: .never)
 		}
 	}
 	
 	@available(iOS 11, *)
-	func setBehaviour(behaviour: UIScrollViewContentInsetAdjustmentBehavior, title: String) {
-		behaviourButton.title = title
+	func setBehaviour(behaviour: UIScrollViewContentInsetAdjustmentBehavior) {
+		behaviourButton.title = getBehaviours()[behaviour]
 		tableview.contentInsetAdjustmentBehavior = behaviour
 	}
 	
 	@available(iOS 11, *)
-	func getBehaviours() -> [String: UIScrollViewContentInsetAdjustmentBehavior]{
-		return ["Never": .never, "Automatic": .automatic, "Always": .always, "Axes": .scrollableAxes]
+	func getBehaviours() -> [ UIScrollViewContentInsetAdjustmentBehavior: String]{
+		return [.never: "Never", .automatic: "Automatic", .always: "Always" , .scrollableAxes: "Axes" ]
 	}
 
 	@IBAction func toggle(_ sender: Any) {
@@ -40,12 +40,11 @@ class ViewController: UIViewController {
 			return
 		}
 		
-			
 		let alert = UIAlertController(title: "Change behaviour", message: "", preferredStyle: .actionSheet)
 		
-		getBehaviours().forEach { title, behaviour in
+		getBehaviours().forEach {  behaviour, title in
 			alert.addAction(UIAlertAction(title: title, style: .default) { action in 
-				self.setBehaviour(behaviour: behaviour, title: title)
+				self.setBehaviour(behaviour: behaviour)
 			})
 		}
 		present(alert, animated: true, completion: nil)
